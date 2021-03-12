@@ -1,0 +1,20 @@
+﻿@page "/"
+@using WebHost.Clients
+@inject MainClient MainClient
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+Take this data, then:
+<p><em>@result</em></p>
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code {
+    private string result;
+
+    protected override async Task OnInitializedAsync()
+    {
+        result = await MainClient.OnGet();
+    }
+}
